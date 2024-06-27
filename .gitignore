@@ -1,1 +1,29 @@
-/.idx
+unction createUserProfiles(names, modifiedNames) {
+    if (names.length !== modifiedNames.length) {
+        throw new Error("The lengths of the names and modifiedNames arrays must be equal.");
+    }
+    
+    const userProfiles = names.map((name, index) => ({
+        originalName: name,
+        modifiedName: modifiedNames[index],
+        id: index + 1
+    }));
+
+    return userProfiles;
+}
+
+// Example usage:
+const names = ["Alice", "Bob", "Charlie"];
+const modifiedNames = ["Alicia", "Robert", "Charles"];
+const profiles = createUserProfiles(names, modifiedNames);
+console.log(profiles);
+/*
+Output:
+[
+    { originalName: "Alice", modifiedName: "Alicia", id: 1 },
+    { originalName: "Bob", modifiedName: "Robert", id: 2 },
+    { originalName: "Charlie", modifiedName: "Charles", id: 3 }
+]
+*/
+
+module.exports = { createUserProfiles };
